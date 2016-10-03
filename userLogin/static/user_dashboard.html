@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Wellness - Nutrition Tracking</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/custom.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <script src="https://use.fontawesome.com/d53b0f3e2d.js"></script>
+
+</head>
+<body>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">Wellness Diary</a>
+      <ul class="right hide-on-med-and-down">
+        <!-- <li><a href="#">Signup</a></li> -->
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <!-- <li><a href="#">Signup</a></li> -->
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m5">
+        <ul class="collection with-header">
+          <li class="collection-header">
+            <div class="row">
+              <div class="col s6"><img class="circle responsive-img" src="media/girl.jpg"></div>
+
+              <div class="col s6"><h5>Janice Smith</h5></div>
+            </div>            
+          </li>
+          <li class="collection-item">Dr. Kazanski</li>
+          <li class="collection-item">BMI: 25</li>
+          <li class="collection-item">Ht: 5'4"</li>
+          <li class="collection-item">Wt: 141lbs</li>
+        </ul>
+      </div>
+
+      <div class="col s12 m7">
+          <div class="section">
+
+            <div class="row">
+              <div class="col s12 m6">
+                <h1 class="right">550</h1>
+              </div>
+
+              <div class="col s12 m6">
+                <h3>Calories</h3>
+                <div class="progress">
+                  <div class="determinate" style="width: 70%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12 m6">
+                <h1 class="right">30</h1>
+              </div>
+
+              <div class="col s12 m6">
+                <h3>Carbs</h3>
+                <div class="progress">
+                  <div class="determinate" style="width: 34%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12 m6">
+                <h1 class="right">68</h1>
+              </div>
+
+              <div class="col s12 m6">
+                <h3>Fats</h3>
+                <div class="progress">
+                  <div class="determinate" style="width: 45%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12 m6">
+                <h1 class="right">140</h1>
+              </div>
+              <div class="col s12 m6">
+                <h3>Sugar</h3>
+                <div class="progress">
+                  <div class="determinate" style="width: 10%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+    </div>
+
+    
+    </div>
+    
+
+
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">About</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by Team Legion
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+
+  <!-- Modal Structure -->
+  <div id="user-reg-modal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+              <label for="first_name">First Name</label>
+            </div>
+            <div class="input-field col s6">
+              <input id="last_name" type="text" class="validate">
+              <label for="last_name">Last Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="password" type="password" class="validate">
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Sign Up</a>
+    </div>
+  </div>
+
+
+  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+      <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+      <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+      <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+    </ul>
+  </div>
+</html>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+</script>
