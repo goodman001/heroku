@@ -4,31 +4,16 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from userLogin.models import Userlist
-from userLogin.functions import findall,finddata,savedata,updatedata
+from userLogin.models import Journal
+from userLogin.functions import findall,findallif,finddata,savedata,updatedata
 import datetime
+import logging
+import json
+import collections
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 def index(request):
     return render(request, 'userLogin/index.html')
-'''
-def login(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        pwd = request.POST['password']
-        data = {"username": username,"passwd":pwd}
-        res = finddata(Userlist,data)
-        if res == None:
-            return HttpResponse('<html><script type="text/javascript">alert("Sorry!Username or password is wrong!"); window.location="/"</script></html>')
-        else:
-            data_2 ={"login_time":datetime.datetime.now()}
-            updatedata(Userlist,data,data_2)
-            datalist = {"username":res.username,"email":res.email,"reg_time":res.reg_time,"login_time":res.login_time}
-            response= render_to_response('userLogin/userinfo.html', {'infolist':datalist}) 
-            #response.set_cookie('username',username,3600)
-            return response
-           
-def logoff(request):
-    return HttpResponse('<html><script type="text/javascript">alert("Goodbye!"); window.location="/"</script></html>')     
-'''   
 def register(request):
     if request.method == 'POST':
         username = request.POST['firstname']
@@ -55,3 +40,85 @@ def register(request):
         return HttpResponse(username + email)
     else:
         return HttpResponse("failure!")
+def api(request):
+    res = findall(Userlist)
+    userlist = []
+    for cell in res:
+        tmp = cell.firstname + " " + cell.lastname
+        userlist.append(tmp)
+    s = json.dumps(userlist)
+    #logging.debug(res)
+    return HttpResponse(s)
+def api1(request,uid):
+    id_ = int(uid)
+    res = finddata(Userlist,{"id":id_})
+    if res != None:
+        info = collections.OrderedDict()
+        info["id"] = id_
+        info["firstname"] = res.firstname
+        info["lastname"] = res.lastname
+        info["email"] = res.email
+        info["passwd"] = res.passwd
+        info["reg_time"] = str(res.reg_time)
+        info["login_time"] = str(res.login_time) 
+        s = json.dumps(info)
+        return HttpResponse(s)
+    else:
+        return HttpResponse("Not existed the user: ")
+def api2(request,uid,entry):
+    id_ = int(uid)
+    res = finddata(Userlist,{"id":id_})
+    if res != None:
+        data = {"uid":id_}
+        res =findallif(Journal,data)
+        if res == None:
+            return HttpResponse("[*]uid " + str(id_) +" no write entry!")
+        titlelist = []
+        for cell in res:
+            info = collections.OrderedDict()
+            info["Title"] = cell.Title
+            info["Content"] = cell.Content
+            info["Createtime"] = str(cell.Createtime)
+            titlelist.append(info)
+        s = json.dumps(titlelist)
+        return HttpResponse(s)
+    else:
+        return HttpResponse("[*]uid "+str(id_) + " no exist!")
+def api3(request,uid,entry,entry_id):
+    id_ = int(uid)
+    id_en = int(entry_id)
+    res = finddata(Userlist,{"id":id_})
+    if res != None:
+        data = {"uid":id_,"id":id_en}
+        res =findallif(Journal,data)
+        if len(res) == 0:
+            return HttpResponse("[*]uid " + str(id_) +" no write entry " + str(id_en) + "!")
+        titlelist = []
+        for cell in res:
+            info = collections.OrderedDict()
+            info["Title"] = cell.Title
+            info["Content"] = cell.Content
+            info["Createtime"] = str(cell.Createtime)
+            titlelist.append(info)
+        s = json.dumps(titlelist)
+        return HttpResponse(s)
+    else:
+        return HttpResponse("[*]uid "+str(id_) + " no exist!")
+@csrf_exempt
+def api4(request,uid,create):
+    id_ = int(uid)
+    res = finddata(Userlist,{"id":id_})
+    if res == None:
+       return HttpResponse("[*]Failure: create a journal entry failure!Because there is no exit the uid!")
+    if request.method == 'POST':
+         body_unicode = request.body.decode('utf-8')
+         body = json.loads(body_unicode)
+         Title = body['Title']
+         Content = body['Content']
+         data = { "uid":id_,"Title":Title,"Content":Content}
+         res1 = savedata(Journal,data)
+         if res1 == 1:
+            return HttpResponse("[*]uid " + str(id_) + " create entry("+ Title+") successfully!")
+         return HttpResponse(s1) 
+    return HttpResponse(uid)
+

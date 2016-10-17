@@ -40,6 +40,22 @@
             <div class="row center">
               <a class="btn-large fw waves-effect waves-light teal lighten-1 modal-trigger" id="download-button" href="#user-reg-modal"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Patient</a>
             </div>
+            <div class="row center" style="background-color:green;padding:10px">
+             <h6>Test /api/v1/users/id/create api,you can change action id to test!</h6>
+              <form action="{% url 'api4' %}" method="post">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="first_name" name = "firstname" type="text" class="validate">
+                  <label for="first_name">Journal Title</label>
+               </div>
+               <div class="input-field col s12">
+                  <input id="last_name" name="lastname" type="text" class="validate">
+                  <label for="last_name">Journal Content</label>
+               </div>
+               <button type="submit" class="modal-action modal-close waves-effect waves-green btn">Submit</button>
+             </div>
+             </form>
+            </div>
           </div>
 
           <div class="col s12 m6">

@@ -20,4 +20,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', userLogin_views.index, name = "home"),
     url(r'^register/$', userLogin_views.register, name = "register"),
+    url(r'^api/v1/users/$',userLogin_views.api,name = "api"),
+    url(r'^api/v1/users/(\d+)/$',userLogin_views.api1,name = "api1"),
+    url(r'^api/v1/users/(\d+)/(entry)/$',userLogin_views.api2,name = "api2"),
+    url(r'^api/v1/users/(\d+)/(entry)/(\d+)/$',userLogin_views.api3,name = "api3"),
+    url(r'^api/v1/users/(\d+)/(create)/$',userLogin_views.api4,name = "api4"),
 ]

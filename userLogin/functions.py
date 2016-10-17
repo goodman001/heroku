@@ -6,6 +6,12 @@ def findall(db_object):
     except:
        res = None
     return res
+def findallif(db_object,data):
+    try:
+       res = db_object.objects.filter(**data)
+    except:
+       res = None
+    return res
 def finddata(db_object,data):
     try:
        res = db_object.objects.get(**data)

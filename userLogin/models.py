@@ -11,6 +11,15 @@ class Userlist(models.Model):
     reg_time = models.DateTimeField(auto_now_add = False)
     login_time = models.DateTimeField(auto_now_add = True)
     def __unicode__(self):
-      return self.username
+      return self.firstname
     class Meta:
       ordering = ['-login_time']
+class Journal(models.Model):
+    uid = models.IntegerField(default = 1)
+    Title = models.CharField(max_length = 1024 ,blank = False)
+    Content = models.CharField(max_length = 2048 ,blank = False)
+    Createtime = models.DateTimeField(auto_now_add = True)
+    def __unicode__(self):
+      return self.uid
+    class Meta:
+      ordering = ['-Createtime']

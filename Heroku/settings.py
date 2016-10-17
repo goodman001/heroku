@@ -26,7 +26,7 @@ SECRET_KEY = '#a-dqx&e#j7tvtfb)skih7firmr%madypqo#h_fsckja*h2-+)'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+APPEND_SLASH=False
 
 # Application definition
 
